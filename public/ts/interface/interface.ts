@@ -14,4 +14,13 @@ export interface pokemon {
 	sprites: {
 		front_default: string;
 	};
+	species: {
+		url: string;
+	};
+}
+
+export interface pokemon2 {
+	color: {
+		name: string;
+	};
 }
