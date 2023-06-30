@@ -72,12 +72,14 @@
 	align-items: center;
 	font-size: 0.7rem;
 	padding: 0;
+	color: white;
+	font-weight: 600;
 }
 
 .normal {
 	background-color: #a8a878;
 }
-.figthing {
+.fighting {
 	background-color: #c03028;
 }
 .flying {
