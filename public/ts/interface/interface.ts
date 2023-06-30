@@ -11,16 +11,29 @@ export interface listPokemon {
 export interface pokemon {
 	id: number;
 	name: string;
+	order: number;
 	sprites: {
 		front_default: string;
 	};
 	species: {
 		url: string;
 	};
+	types: {
+		type: {
+			name: string;
+		};
+	}[];
 }
 
 export interface pokemon2 {
 	color: {
 		name: string;
 	};
+}
+
+export interface pokemonObject {
+	$img: HTMLElement;
+	$figure: HTMLElement;
+	$divName: HTMLElement;
+	$divContent: HTMLElement;
 }
