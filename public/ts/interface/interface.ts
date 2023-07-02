@@ -35,5 +35,5 @@ export interface pokemonObject {
 	$img: HTMLElement;
 	$figure: HTMLElement;
 	$divName: HTMLElement;
-	$divContent: HTMLElement;
+	$divContent2: HTMLElement;
 }

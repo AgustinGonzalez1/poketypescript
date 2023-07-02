@@ -34,16 +34,16 @@ const createPokemon = (data: listPokemon): void => {
 			$figcaption: HTMLElement = document.createElement("figcaption"),
 			$namePokemon: Node = document.createTextNode(pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)),
 			$divName: HTMLElement = document.createElement("div"),
-			$divContent: HTMLElement = document.createElement("div"),
+			$divContent2: HTMLElement = document.createElement("div"),
 			$divContent1: HTMLElement = document.createElement("div");
 
 		$img.setAttribute("alt", pokemon.name);
 		$img.setAttribute("title", pokemon.name);
 		$img.classList.add("pokemon-img");
 
-		$divContent.classList.add("pokemon-div-content");
+		$divContent2.classList.add("pokemon-div-content2");
 
-		const object: pokemonObject = { $img, $figure, $divName, $divContent };
+		const object: pokemonObject = { $img, $figure, $divName, $divContent2 };
 
 		fetchPokemon2(pokemon.url, object);
 
@@ -57,7 +57,7 @@ const createPokemon = (data: listPokemon): void => {
 		$divContent1.appendChild($img);
 		$divContent1.classList.add("pokemon-div-content1");
 		$figure.appendChild($divContent1);
-		$figure.appendChild($divContent);
+		$figure.appendChild($divContent2);
 		$figure.classList.add("pokemon-card");
 
 		fragment.appendChild($figure);
@@ -84,7 +84,9 @@ $next.addEventListener("click", () => {
 });
 
 const fetchPokemon2 = (url: string, object: pokemonObject): void => {
-	const { $img, $figure, $divName, $divContent } = object;
+	const { $img, $figure, $divName, $divContent2 } = object;
+	const $divDivContent: HTMLElement = document.createElement("div");
+	$divContent2.appendChild($divDivContent);
 	fetch(url)
 		.then((response) => {
 			if (!response.ok) {
@@ -96,114 +98,33 @@ const fetchPokemon2 = (url: string, object: pokemonObject): void => {
 			$img.setAttribute("src", data.sprites.front_default);
 			const $id = document.createElement("p");
 
-			const $divType = document.createElement("div");
+			const $divType = document.createElement("div"),
+				$titleType = document.createElement("p");
+
+			$titleType.textContent = "Type";
+			$titleType.classList.add("pokemon-title-type");
+
+			$divType.appendChild($titleType);
 			$divType.classList.add("pokemon-div-type");
 
 			let firstType: boolean = false;
 
+			const $typeContent = document.createElement("div");
+			$typeContent.classList.add("pokemon-type-content");
 			data.types.forEach((type) => {
-				const $type = document.createElement("p");
+				const $type = document.createElement("p"),
+					typePokemon: string = type.type.name;
+
 				$type.textContent = type.type.name;
 				$type.classList.add("pokemon-type");
 
-				if (type.type.name === "grass") {
-					$type.classList.add("grass");
-				} else if (type.type.name === "fire") {
-					$type.classList.add("fire");
-				} else if (type.type.name === "water") {
-					$type.classList.add("water");
-				} else if (type.type.name === "bug") {
-					$type.classList.add("bug");
-				} else if (type.type.name === "normal") {
-					$type.classList.add("normal");
-				} else if (type.type.name === "poison") {
-					$type.classList.add("poison");
-				} else if (type.type.name === "electric") {
-					$type.classList.add("electric");
-				} else if (type.type.name === "ground") {
-					$type.classList.add("ground");
-				} else if (type.type.name === "fairy") {
-					$type.classList.add("fairy");
-				} else if (type.type.name === "fighting") {
-					$type.classList.add("fighting");
-				} else if (type.type.name === "psychic") {
-					$type.classList.add("psychic");
-				} else if (type.type.name === "rock") {
-					$type.classList.add("rock");
-				} else if (type.type.name === "ghost") {
-					$type.classList.add("ghost");
-				} else if (type.type.name === "ice") {
-					$type.classList.add("ice");
-				} else if (type.type.name === "dragon") {
-					$type.classList.add("dragon");
-				} else if (type.type.name === "dark") {
-					$type.classList.add("dark");
-				} else if (type.type.name === "steel") {
-					$type.classList.add("steel");
-				} else if (type.type.name === "flying") {
-					$type.classList.add("flying");
-				}
+				pokemonType(typePokemon, $type);
 
-				if (!firstType) {
-					if (type.type.name === "grass") {
-						$figure.classList.add("grass");
-						firstType = true;
-					} else if (type.type.name === "fire") {
-						$figure.classList.add("fire");
-						firstType = true;
-					} else if (type.type.name === "water") {
-						$figure.classList.add("water");
-						firstType = true;
-					} else if (type.type.name === "bug") {
-						$figure.classList.add("bug");
-						firstType = true;
-					} else if (type.type.name === "normal") {
-						$figure.classList.add("normal");
-						firstType = true;
-					} else if (type.type.name === "poison") {
-						$figure.classList.add("poison");
-						firstType = true;
-					} else if (type.type.name === "electric") {
-						$figure.classList.add("electric");
-						firstType = true;
-					} else if (type.type.name === "ground") {
-						$figure.classList.add("ground");
-						firstType = true;
-					} else if (type.type.name === "fairy") {
-						$figure.classList.add("fairy");
-						firstType = true;
-					} else if (type.type.name === "fighting") {
-						$figure.classList.add("fighting");
-						firstType = true;
-					} else if (type.type.name === "psychic") {
-						$figure.classList.add("psychic");
-						firstType = true;
-					} else if (type.type.name === "rock") {
-						$figure.classList.add("rock");
-						firstType = true;
-					} else if (type.type.name === "ghost") {
-						$figure.classList.add("ghost");
-						firstType = true;
-					} else if (type.type.name === "ice") {
-						$figure.classList.add("ice");
-						firstType = true;
-					} else if (type.type.name === "dragon") {
-						$figure.classList.add("dragon");
-						firstType = true;
-					} else if (type.type.name === "dark") {
-						$figure.classList.add("dark");
-						firstType = true;
-					} else if (type.type.name === "steel") {
-						$figure.classList.add("steel");
-						firstType = true;
-					} else if (type.type.name === "flying") {
-						$figure.classList.add("flying");
-						firstType = true;
-					}
-				}
+				pokemonTypeBackground(firstType, typePokemon, $figure);
 
-				$divType.appendChild($type);
-				$divContent.appendChild($divType);
+				$typeContent.appendChild($type);
+				$divType.appendChild($typeContent);
+				$divContent2.appendChild($divType);
 			});
 
 			const idString = data.id.toString();
@@ -217,54 +138,108 @@ const fetchPokemon2 = (url: string, object: pokemonObject): void => {
 			}
 			$id.classList.add("pokemon-id");
 			$divName.appendChild($id);
-			/* 			fetchPokemon3(data.species.url, $figure); */
 		})
 		.catch((error) => {
 			console.error(error);
 		});
 };
 
-/* const fetchPokemon3 = (url: string, $figure: HTMLElement) => {
-	fetch(url)
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("Error HTTP: " + response.statusText);
-			}
-			return response.json();
-		})
-		.then((data: pokemon2) => {
-			if (data.color.name === "green") {
-				$figure.classList.add("grass");
-			}
-			if (data.color.name === "red") {
-				$figure.classList.add("fire");
-			}
-			if (data.color.name === "blue") {
-				$figure.classList.add("water");
-			}
-			if (data.color.name === "yellow") {
-				$figure.classList.add("electric");
-			}
-			if (data.color.name === "purple") {
-				$figure.classList.add("poison");
-			}
-			if (data.color.name === "brown") {
-				$figure.classList.add("ground");
-			}
-			if (data.color.name === "gray") {
-				$figure.classList.add("rock");
-			}
-			if (data.color.name === "pink") {
-				$figure.classList.add("fairy");
-			}
-			if (data.color.name === "black") {
-				$figure.classList.add("dark");
-			}
-			if (data.color.name === "white") {
-				$figure.classList.add("ice");
-			}
-			if (data.color.name === "gray") {
-				$figure.classList.add("steel");
-			}
-		});
-}; */
+const pokemonType = (typePokemon: string, $type: HTMLElement): void => {
+	if (typePokemon === "grass") {
+		$type.classList.add("grass");
+	} else if (typePokemon === "fire") {
+		$type.classList.add("fire");
+	} else if (typePokemon === "water") {
+		$type.classList.add("water");
+	} else if (typePokemon === "bug") {
+		$type.classList.add("bug");
+	} else if (typePokemon === "normal") {
+		$type.classList.add("normal");
+	} else if (typePokemon === "poison") {
+		$type.classList.add("poison");
+	} else if (typePokemon === "electric") {
+		$type.classList.add("electric");
+	} else if (typePokemon === "ground") {
+		$type.classList.add("ground");
+	} else if (typePokemon === "fairy") {
+		$type.classList.add("fairy");
+	} else if (typePokemon === "fighting") {
+		$type.classList.add("fighting");
+	} else if (typePokemon === "psychic") {
+		$type.classList.add("psychic");
+	} else if (typePokemon === "rock") {
+		$type.classList.add("rock");
+	} else if (typePokemon === "ghost") {
+		$type.classList.add("ghost");
+	} else if (typePokemon === "ice") {
+		$type.classList.add("ice");
+	} else if (typePokemon === "dragon") {
+		$type.classList.add("dragon");
+	} else if (typePokemon === "dark") {
+		$type.classList.add("dark");
+	} else if (typePokemon === "steel") {
+		$type.classList.add("steel");
+	} else if (typePokemon === "flying") {
+		$type.classList.add("flying");
+	}
+};
+
+const pokemonTypeBackground = (firstType: boolean, typePokemon: string, $figure: HTMLElement): void => {
+	if (!firstType) {
+		if (typePokemon === "grass") {
+			$figure.classList.add("grass");
+			firstType = true;
+		} else if (typePokemon === "fire") {
+			$figure.classList.add("fire");
+			firstType = true;
+		} else if (typePokemon === "water") {
+			$figure.classList.add("water");
+			firstType = true;
+		} else if (typePokemon === "bug") {
+			$figure.classList.add("bug");
+			firstType = true;
+		} else if (typePokemon === "normal") {
+			$figure.classList.add("normal");
+			firstType = true;
+		} else if (typePokemon === "poison") {
+			$figure.classList.add("poison");
+			firstType = true;
+		} else if (typePokemon === "electric") {
+			$figure.classList.add("electric");
+			firstType = true;
+		} else if (typePokemon === "ground") {
+			$figure.classList.add("ground");
+			firstType = true;
+		} else if (typePokemon === "fairy") {
+			$figure.classList.add("fairy");
+			firstType = true;
+		} else if (typePokemon === "fighting") {
+			$figure.classList.add("fighting");
+			firstType = true;
+		} else if (typePokemon === "psychic") {
+			$figure.classList.add("psychic");
+			firstType = true;
+		} else if (typePokemon === "rock") {
+			$figure.classList.add("rock");
+			firstType = true;
+		} else if (typePokemon === "ghost") {
+			$figure.classList.add("ghost");
+			firstType = true;
+		} else if (typePokemon === "ice") {
+			$figure.classList.add("ice");
+			firstType = true;
+		} else if (typePokemon === "dragon") {
+			$figure.classList.add("dragon");
+			firstType = true;
+		} else if (typePokemon === "dark") {
+			$figure.classList.add("dark");
+			firstType = true;
+		} else if (typePokemon === "steel") {
+			$figure.classList.add("steel");
+			firstType = true;
+		} else if (typePokemon === "flying") {
+			$figure.classList.add("flying");
+			firstType = true;
+		}
+	}
+};

@@ -50,18 +50,24 @@
 	font-size: 0.7rem;
 	font-weight: 600;
 }
-.pokemon-div-content {
+.pokemon-div-content2 {
 	width: 100%;
 	height: 100px;
 	display: flex;
 	justify-content: space-between;
 	background-color: white;
 	padding: 0.5rem;
+	flex-direction: column-reverse;
 }
 .pokemon-div-type {
 	display: flex;
 	flex-direction: column;
 	height: fit-content;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #000;
+	padding-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 .pokemon-type {
 	border-radius: 4px;
@@ -74,6 +80,13 @@
 	padding: 0;
 	color: white;
 	font-weight: 600;
+}
+.pokemon-title-type {
+	font-size: 0.7rem;
+	font-weight: 600;
+}
+.pokemon-type-content {
+	display: flex;
 }
 
 .normal {
