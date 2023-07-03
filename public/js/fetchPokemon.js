@@ -61,8 +61,13 @@ $next.addEventListener("click", () => {
 });
 const fetchPokemon2 = (url, object) => {
     const { $img, $figure, $divName, $divContent2 } = object;
-    const $divDivContent = document.createElement("div");
-    $divContent2.appendChild($divDivContent);
+    const $divHeightWidth = document.createElement("div");
+    const $divHeight = document.createElement("div"), $divWeight = document.createElement("div"), $titleHeight = document.createElement("p"), $titleWeight = document.createElement("p");
+    $divHeightWidth.appendChild($divWeight);
+    $divContent2;
+    $divHeightWidth.appendChild($divHeight);
+    $divHeightWidth.classList.add("pokemon-div-height-width");
+    $divContent2.appendChild($divHeightWidth);
     fetch(url)
         .then((response) => {
         if (!response.ok) {
@@ -73,7 +78,19 @@ const fetchPokemon2 = (url, object) => {
         .then((data) => {
         $img.setAttribute("src", data.sprites.front_default);
         const $id = document.createElement("p");
-        const $divType = document.createElement("div"), $titleType = document.createElement("p");
+        const $divType = document.createElement("div"), $titleType = document.createElement("p"), $divIconHeight = document.createElement("div"), $divIconWeight = document.createElement("div");
+        $divIconWeight.innerHTML = `<i class="fa-solid fa-weight-scale icon"></i>  <p class="p-h">${data.weight}</p>`;
+        $divIconWeight.classList.add("icon-weight");
+        $divWeight.classList.add("pokemon-div-weight");
+        $divWeight.appendChild($divIconWeight);
+        $titleWeight.textContent = "Weight";
+        $divWeight.appendChild($titleWeight);
+        $divIconHeight.innerHTML = `<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 4H21V6H11V4ZM6 7V11H4V7H1L5 3L9 7H6ZM6 17H9L5 21L1 17H4V13H6V17ZM11 18H21V20H11V18ZM9 11H21V13H9V11Z"></path></svg> <p class="p-h">${data.height}</p>`;
+        $divIconHeight.classList.add("icon-height");
+        $divHeight.classList.add("pokemon-div-height");
+        $divHeight.appendChild($divIconHeight);
+        $titleHeight.textContent = "Height";
+        $divHeight.appendChild($titleHeight);
         $titleType.textContent = "Type";
         $titleType.classList.add("pokemon-title-type");
         $divType.appendChild($titleType);
@@ -86,7 +103,80 @@ const fetchPokemon2 = (url, object) => {
             $type.textContent = type.type.name;
             $type.classList.add("pokemon-type");
             pokemonType(typePokemon, $type);
-            pokemonTypeBackground(firstType, typePokemon, $figure);
+            if (!firstType) {
+                if (typePokemon === "grass") {
+                    $figure.classList.add("grass");
+                    firstType = true;
+                }
+                else if (typePokemon === "fire") {
+                    $figure.classList.add("fire");
+                    firstType = true;
+                }
+                else if (typePokemon === "water") {
+                    $figure.classList.add("water");
+                    firstType = true;
+                }
+                else if (typePokemon === "bug") {
+                    $figure.classList.add("bug");
+                    firstType = true;
+                }
+                else if (typePokemon === "normal") {
+                    $figure.classList.add("normal");
+                    firstType = true;
+                }
+                else if (typePokemon === "poison") {
+                    $figure.classList.add("poison");
+                    firstType = true;
+                }
+                else if (typePokemon === "electric") {
+                    $figure.classList.add("electric");
+                    firstType = true;
+                }
+                else if (typePokemon === "ground") {
+                    $figure.classList.add("ground");
+                    firstType = true;
+                }
+                else if (typePokemon === "fairy") {
+                    $figure.classList.add("fairy");
+                    firstType = true;
+                }
+                else if (typePokemon === "fighting") {
+                    $figure.classList.add("fighting");
+                    firstType = true;
+                }
+                else if (typePokemon === "psychic") {
+                    $figure.classList.add("psychic");
+                    firstType = true;
+                }
+                else if (typePokemon === "rock") {
+                    $figure.classList.add("rock");
+                    firstType = true;
+                }
+                else if (typePokemon === "ghost") {
+                    $figure.classList.add("ghost");
+                    firstType = true;
+                }
+                else if (typePokemon === "ice") {
+                    $figure.classList.add("ice");
+                    firstType = true;
+                }
+                else if (typePokemon === "dragon") {
+                    $figure.classList.add("dragon");
+                    firstType = true;
+                }
+                else if (typePokemon === "dark") {
+                    $figure.classList.add("dark");
+                    firstType = true;
+                }
+                else if (typePokemon === "steel") {
+                    $figure.classList.add("steel");
+                    firstType = true;
+                }
+                else if (typePokemon === "flying") {
+                    $figure.classList.add("flying");
+                    firstType = true;
+                }
+            }
             $typeContent.appendChild($type);
             $divType.appendChild($typeContent);
             $divContent2.appendChild($divType);
@@ -162,81 +252,5 @@ const pokemonType = (typePokemon, $type) => {
     }
     else if (typePokemon === "flying") {
         $type.classList.add("flying");
-    }
-};
-const pokemonTypeBackground = (firstType, typePokemon, $figure) => {
-    if (!firstType) {
-        if (typePokemon === "grass") {
-            $figure.classList.add("grass");
-            firstType = true;
-        }
-        else if (typePokemon === "fire") {
-            $figure.classList.add("fire");
-            firstType = true;
-        }
-        else if (typePokemon === "water") {
-            $figure.classList.add("water");
-            firstType = true;
-        }
-        else if (typePokemon === "bug") {
-            $figure.classList.add("bug");
-            firstType = true;
-        }
-        else if (typePokemon === "normal") {
-            $figure.classList.add("normal");
-            firstType = true;
-        }
-        else if (typePokemon === "poison") {
-            $figure.classList.add("poison");
-            firstType = true;
-        }
-        else if (typePokemon === "electric") {
-            $figure.classList.add("electric");
-            firstType = true;
-        }
-        else if (typePokemon === "ground") {
-            $figure.classList.add("ground");
-            firstType = true;
-        }
-        else if (typePokemon === "fairy") {
-            $figure.classList.add("fairy");
-            firstType = true;
-        }
-        else if (typePokemon === "fighting") {
-            $figure.classList.add("fighting");
-            firstType = true;
-        }
-        else if (typePokemon === "psychic") {
-            $figure.classList.add("psychic");
-            firstType = true;
-        }
-        else if (typePokemon === "rock") {
-            $figure.classList.add("rock");
-            firstType = true;
-        }
-        else if (typePokemon === "ghost") {
-            $figure.classList.add("ghost");
-            firstType = true;
-        }
-        else if (typePokemon === "ice") {
-            $figure.classList.add("ice");
-            firstType = true;
-        }
-        else if (typePokemon === "dragon") {
-            $figure.classList.add("dragon");
-            firstType = true;
-        }
-        else if (typePokemon === "dark") {
-            $figure.classList.add("dark");
-            firstType = true;
-        }
-        else if (typePokemon === "steel") {
-            $figure.classList.add("steel");
-            firstType = true;
-        }
-        else if (typePokemon === "flying") {
-            $figure.classList.add("flying");
-            firstType = true;
-        }
     }
 };

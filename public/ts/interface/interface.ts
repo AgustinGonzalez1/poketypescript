@@ -23,12 +23,8 @@ export interface pokemon {
 			name: string;
 		};
 	}[];
-}
-
-export interface pokemon2 {
-	color: {
-		name: string;
-	};
+	height: number;
+	weight: number;
 }
 
 export interface pokemonObject {
