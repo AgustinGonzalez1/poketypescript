@@ -7,9 +7,31 @@
 	font-family: "Poppins", sans-serif;
 }
 
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	flex-direction: column;
+	background-color: #000;
+}
+
+.header-img {
+	width: 100%;
+	height: 50vh;
+	object-fit: cover;
+}
+
+.main {
+	background-image: url(../img/pokeballs.jpg);
+}
+
 .pokemon-box {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 
 .pokemon-card {

@@ -50,12 +50,12 @@ const createPokemon = (data) => {
     data.previous !== null && (previous = data.previous);
 };
 $previous.addEventListener("click", () => {
-    $pokeBox.textContent = "";
+    $pokeBox.innerHTML = "<p>Loading...</p>";
     urlPokemon = previous;
     fetchPokemon();
 });
 $next.addEventListener("click", () => {
-    $pokeBox.textContent = "";
+    $pokeBox.innerHTML = "<p>Loading...</p>";
     urlPokemon = next;
     fetchPokemon();
 });

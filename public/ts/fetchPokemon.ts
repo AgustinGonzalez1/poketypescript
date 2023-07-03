@@ -72,13 +72,13 @@ const createPokemon = (data: listPokemon): void => {
 };
 
 $previous.addEventListener("click", () => {
-	$pokeBox.textContent = "";
+	$pokeBox.innerHTML = "<p>Loading...</p>";
 	urlPokemon = previous;
 	fetchPokemon();
 });
 
 $next.addEventListener("click", () => {
-	$pokeBox.textContent = "";
+	$pokeBox.innerHTML = "<p>Loading...</p>";
 	urlPokemon = next;
 	fetchPokemon();
 });
