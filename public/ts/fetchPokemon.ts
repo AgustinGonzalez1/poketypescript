@@ -19,7 +19,6 @@ export const fetchPokemon = (): void => {
 		})
 		.then((data: listPokemon) => {
 			createPokemon(data);
-			console.log(data);
 		})
 		.catch((error) => {
 			console.error(error);
@@ -92,7 +91,6 @@ const fetchPokemon2 = (url: string, object: pokemonObject): void => {
 		$titleWeight: HTMLElement = document.createElement("p");
 
 	$divHeightWidth.appendChild($divWeight);
-	$divContent2;
 
 	$divHeightWidth.appendChild($divHeight);
 	$divHeightWidth.classList.add("pokemon-div-height-width");

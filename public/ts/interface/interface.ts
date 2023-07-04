@@ -25,6 +25,11 @@ export interface pokemon {
 	}[];
 	height: number;
 	weight: number;
+	moves: {
+		move: {
+			name: string;
+		};
+	}[];
 }
 
 export interface pokemonObject {
