@@ -255,7 +255,7 @@ footer {
 
 footer > p {
 	color: white;
-	font-weight: bold;
+
 	font-size: smaller;
 }
 
@@ -319,33 +319,4 @@ footer > p {
 }
 .redSocial:hover {
 	background-color: #6d0004;
-}
-
-.modal {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 50%;
-	width: 50%;
-	background-color: #fff;
-	transition: all 0.3s ease;
-	opacity: 0;
-	overflow: hidden;
-	z-index: -1;
-}
-
-.modal-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 10px;
-	cursor: pointer;
-	border-radius: 0;
-	border: none;
-}
-
-.active {
-	opacity: 1;
-	z-index: 1;
 }
