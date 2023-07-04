@@ -66,15 +66,15 @@ const createPokemon = (data: listPokemon): void => {
 	$pokeBox.appendChild(fragment);
 
 	data.previous === null ? $previous.setAttribute("disabled", "true") : $previous.removeAttribute("disabled");
-	data.next !== null && (next = data.next);
 	data.next === null ? $next.setAttribute("disabled", "true") : $next.removeAttribute("disabled");
 	data.previous !== null && (previous = data.previous);
+	data.next !== null && (next = data.next);
 };
 
 $previous.addEventListener("click", () => {
 	$pokeBox.innerHTML = "<p>Loading...</p>";
 	urlPokemon = previous;
-	fetchPokemon();
+	previous ? fetchPokemon() : "";
 });
 
 $next.addEventListener("click", () => {
